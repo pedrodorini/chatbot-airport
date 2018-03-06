@@ -32,17 +32,13 @@ export default class Chat extends Component {
         {
           this.state.userMessages.map((message, index) => {
             return (
-              <div className="row" key={index}>
-                <div className="message-user col s5 right right-align teal accent-3">{message}</div>
-              </div>
-            )
-          })
-        }
-        {
-          this.state.botMessages.map((message, index) => {
-            return (
-              <div className="row" key={index}>
-                <div className="message-bot col s5 left left-align blue lighten-4">{message}</div>
+              <div>
+                <div className="row" key={index}>
+                  <div className="message-user col s5 right right-align teal accent-3">{message}</div>
+                </div>
+                <div className="row" key={index}>
+                  <div className="message-bot col s5 left left-align blue lighten-4">{this.state.botMessages[index]}</div>
+                </div>
               </div>
             )
           })
