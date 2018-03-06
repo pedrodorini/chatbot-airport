@@ -16,6 +16,9 @@ const conversation = new Conversation({
   version_date: '2018-03-06'
 })
 
+app.get('/api/messages', (req, res) => {
+  getMessages()
+})
 app.post('/api/message', (req, res) => {
   let payload = {
     workspace: user.workspace_id,
@@ -23,31 +26,31 @@ app.post('/api/message', (req, res) => {
   }
   conversation.message(payload, (err, data) => {
     if (err) {
-      return res.status(err.code || 500).json(err);
+      return res.status(err.code || 500).json(err)
     }
     return data;
-  });
+  })
 })
 
 function getMessages(res) {
-  let responseText = '';
+  let responseText = ''
   if (!res.output) {
-    res.output = {};
+    res.output = {}
   } else {
-    return res;
+    return res
   }
   if (res.intents && res.intents[0]) {
-    var intent = res.intents[0];
+    var intent = res.intents[0]
     if (res.confidence >= 0.75) {
-      responseText = 'I understood your intent was ' + intent.intent;
+      responseText = 'I understood your intent was ' + intent.intent
     } else if (intent.confidence >= 0.5) {
-      responseText = 'I think your intent was ' + intent.intent;
+      responseText = 'I think your intent was ' + intent.intent
     } else {
-      responseText = 'I did not understand your intent';
+      responseText = 'I did not understand your intent'
     }
   }
-  res.output.text = responseText;
-  return res;
+  res.output.text = responseText
+  return res
 }
 
 app.listen(port, () => {
