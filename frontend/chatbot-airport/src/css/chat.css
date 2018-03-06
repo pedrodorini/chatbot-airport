@@ -17,6 +17,7 @@
 }
 .message-box {
   height: 500px;
+  overflow-y: auto;
 }
 .container-center {
   padding: 15px;
