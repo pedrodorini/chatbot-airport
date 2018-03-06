@@ -1,17 +1,21 @@
 .input-inline {
   display: inline-block;
-  width: 80% !important;
-  margin: 10px 10px 10px 0 !important;
+  width: 84% !important;
+  margin: 10px 10px 10px 25px !important;
   background-color: #fff !important;
   padding: 0 15px !important;
 }
 .btn {
   height: 46px !important;
-  margin-bottom: 1px;
+  margin: 10px 0 10px 0 !important;
 }
 .message-user {
   margin-right: 25px;
 }
 .message-bot {
   margin-left: 25px !important;
+}
+.container-center {
+  width: 80%;
+  margin: 0 auto;
 }
