@@ -18,4 +18,5 @@
 .container-center {
   width: 80%;
   margin: 0 auto;
+  min-height: 500px;
 }

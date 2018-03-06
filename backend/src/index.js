@@ -16,42 +16,25 @@ const conversation = new Conversation({
   version_date: '2018-03-06'
 })
 
-app.get('/api/messages', (req, res) => {
-  getMessages()
-})
 app.post('/api/message', (req, res) => {
   let payload = {
-    workspace: user.workspace_id,
-    input: req.message
+    workspace_id: user.workspace_id,
+    input: { text: req.body.message || {} }
   }
   conversation.message(payload, (err, data) => {
     if (err) {
-      return res.status(err.code || 500).json(err)
+     console.log(err)
     }
-    return data;
+    payload.context = data.context
+    conversation.message(payload, (err, data) => {
+      if (err) {
+        console.log(err)
+      } else {
+        res.send(data.output.text)
+      }
+    })
   })
 })
-
-function getMessages(res) {
-  let responseText = ''
-  if (!res.output) {
-    res.output = {}
-  } else {
-    return res
-  }
-  if (res.intents && res.intents[0]) {
-    var intent = res.intents[0]
-    if (res.confidence >= 0.75) {
-      responseText = 'I understood your intent was ' + intent.intent
-    } else if (intent.confidence >= 0.5) {
-      responseText = 'I think your intent was ' + intent.intent
-    } else {
-      responseText = 'I did not understand your intent'
-    }
-  }
-  res.output.text = responseText
-  return res
-}
 
 app.listen(port, () => {
   console.log(`BACKEND IS RUNNING ON PORT ${port}`)
