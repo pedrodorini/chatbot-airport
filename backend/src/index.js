@@ -4,7 +4,7 @@ const allowCors = require('./config/cors')
 const Conversation = require('watson-developer-cloud/conversation/v1')
 const user = require('./config/userConfig')
 const app = express()
-const port = 3000
+const port = 8000
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
