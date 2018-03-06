@@ -1,22 +1,46 @@
 .input-inline {
   display: inline-block;
-  width: 84% !important;
-  margin: 10px 10px 10px 25px !important;
+  width: 55% !important;
+  margin: 1% 1% 0 1% !important;
   background-color: #fff !important;
   padding: 0 15px !important;
 }
 .btn {
-  height: 46px !important;
-  margin: 10px 0 10px 0 !important;
+  width: 15%;
+  height: 43px !important;
+  margin: 2px 0 10px 0 !important;
 }
-.message-user {
-  margin-right: 25px;
-}
-.message-bot {
+.message-user, .message-bot {
   margin-left: 25px !important;
+  padding: 10px !important;
+  border-radius: 3px;
+}
+.message-box {
+  height: 500px;
 }
 .container-center {
+  padding: 15px;
   width: 80%;
   margin: 0 auto;
-  min-height: 500px;
+}
+.header {
+  color: #fff;
+}
+#input-row {
+  margin: 0;
+}
+.icon {
+  margin: 5px;
+}
+@media (min-width: 640px) {
+  .btn {
+    display: flex;
+    justify-content: center;
+    width: 8%;
+    height: 46px !important;
+    margin: 10px 0 10px 0 !important;
+  } 
+  .input-inline {
+    width: 84% !important;
+  }
 }
