@@ -18,18 +18,20 @@ export default class Chat extends Component {
   }
 
   sendMessage(userMessage) {
-    let userMessages = this.state.userMessages
-    userMessages.push(userMessage)
-    this.setState({...this.state, userMessages})
-    let message = this.state.message
-    axios.post(`http://localhost:8000/api/message`, { message }).then(res => {
-      let message = ''
-      let messages = this.state.botMessages
-      res.data.length === 2 ? message = res.data[1] : message = res.data[0]
-      messages.push(message)
-      this.setState({...this.state, botMessages: messages})
-    })
-    this.setState({...this.state, message: ''})
+    if(this.state.message !== '') {
+      let userMessages = this.state.userMessages
+      userMessages.push(userMessage)
+      this.setState({...this.state, userMessages})
+      let message = this.state.message
+      axios.post(`http://localhost:8000/api/message`, { message }).then(res => {
+        let message = ''
+        let messages = this.state.botMessages
+        res.data.length === 2 ? message = res.data[1] : message = res.data[0]
+        messages.push(message)
+        this.setState({...this.state, botMessages: messages})
+      })
+      this.setState({...this.state, message: ''})
+    }
   }
 
   keyHandler(e) {
