@@ -13,6 +13,10 @@ export default class Chat extends Component {
     this.keyHandler = this.keyHandler.bind(this)
   }
 
+  componentDidUpdate() {
+    this.bottom.scrollIntoView({behavior: 'smooth'})
+  }
+
   sendMessage(userMessage) {
     let userMessages = this.state.userMessages
     userMessages.push(userMessage)
@@ -53,11 +57,12 @@ export default class Chat extends Component {
               )
             })
           }
+          <div ref={el => this.bottom = el}></div>
         </div>
         <div className="container-center center grey darken-4">
           <div className="row" id="input-row">
             <input className="input-inline left" type="text" placeholder="Type a message here" value={this.state.message}
-              onChange={(e) => this.setState({ message: e.target.value })}
+              onChange={e => this.setState({ message: e.target.value })}
               onKeyUp={this.keyHandler}/>
             <button onClick={() => this.sendMessage(this.state.message)} className="btn waves-effect waves-light left" type="submit">
               <i className="material-icons valign-wrapper center-align">send</i>
