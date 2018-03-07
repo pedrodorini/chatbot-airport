@@ -10,6 +10,7 @@ export default class Chat extends Component {
       botMessages: [],
       userMessages: []
     }
+    this.keyHandler = this.keyHandler.bind(this)
   }
 
   sendMessage(userMessage) {
@@ -24,6 +25,12 @@ export default class Chat extends Component {
       messages.push(message)
       this.setState({...this.state, botMessages: messages})
     })
+  }
+
+  keyHandler(e) {
+    if (e.key === 'Enter') {
+      this.sendMessage(this.state.message)
+    }
   }
 
   render() {
@@ -49,7 +56,8 @@ export default class Chat extends Component {
         <div className="container-center center grey darken-4">
           <div className="row" id="input-row">
             <input className="input-inline left" type="text" placeholder="Type a message here"
-              onChange={(e) => this.setState({ message: e.target.value })}/>
+              onChange={(e) => this.setState({ message: e.target.value })}
+              onKeyUp={this.keyHandler}/>
             <button onClick={() => this.sendMessage(this.state.message)} className="btn waves-effect waves-light left" type="submit">
               <i className="material-icons valign-wrapper center-align">send</i>
             </button>

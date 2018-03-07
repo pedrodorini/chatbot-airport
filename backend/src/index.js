@@ -21,7 +21,6 @@ const conversation = new Conversation({
 })
 conversation.message({ workspace_id: payload.workspace_id }, (err, res) => {
   payload.context = res.context
-  console.log(payload)
 })
 
 app.post('/api/message', (req, res) => {
