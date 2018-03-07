@@ -14,7 +14,6 @@ body {
   margin: 2px 0 10px 0 !important;
 }
 .message-user, .message-bot {
-  margin-left: 25px !important;
   padding: 10px !important;
   border-radius: 3px;
 }

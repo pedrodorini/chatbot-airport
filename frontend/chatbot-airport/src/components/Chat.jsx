@@ -25,6 +25,7 @@ export default class Chat extends Component {
       messages.push(message)
       this.setState({...this.state, botMessages: messages})
     })
+    this.setState({...this.state, message: ''})
   }
 
   keyHandler(e) {
@@ -55,7 +56,7 @@ export default class Chat extends Component {
         </div>
         <div className="container-center center grey darken-4">
           <div className="row" id="input-row">
-            <input className="input-inline left" type="text" placeholder="Type a message here"
+            <input className="input-inline left" type="text" placeholder="Type a message here" value={this.state.message}
               onChange={(e) => this.setState({ message: e.target.value })}
               onKeyUp={this.keyHandler}/>
             <button onClick={() => this.sendMessage(this.state.message)} className="btn waves-effect waves-light left" type="submit">
